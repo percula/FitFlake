@@ -14,9 +14,9 @@
  limitations under the License.
 -->
 <resources>
-    <string name="app_name">WatchFace</string>
-    <string name="digital_name">092 Snowflake</string>
-    <string name="digital_background_color">Background color</string>
+    <string name="app_name">Snowflake WatchFace</string>
+    <string name="digital_name">Snowflake</string>
+    <string name="digital_background_color">Background Color</string>
     <string name="digital_config_name">Digital watch face configuration</string>
     <string name="digital_am">AM</string>
     <string name="digital_pm">PM</string>

@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/res/merged/debug/drawable-hdpi/ic_launcher.png",
+        "source": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/res/merged/debug/drawable-hdpi/preview_snowflake.png",
+        "source": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/src/main/res/drawable-hdpi/preview_snowflake.png"
+    },
+    {
+        "merged": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/res/merged/debug/drawable-hdpi/preview_snowflake_circular.png",
+        "source": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/src/main/res/drawable-hdpi/preview_snowflake_circular.png"
+    }
+]

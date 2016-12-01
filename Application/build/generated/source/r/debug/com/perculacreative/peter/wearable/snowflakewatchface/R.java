@@ -3098,11 +3098,11 @@ containing a value of this type.
         public static final int common_open_on_phone=0x7f070024;
         public static final int common_signin_button_text=0x7f070025;
         public static final int common_signin_button_text_long=0x7f070026;
-        public static final int digital_config_background=0x7f07003f;
-        public static final int digital_config_hours=0x7f070040;
-        public static final int digital_config_minutes=0x7f070041;
-        public static final int digital_config_seconds=0x7f070042;
-        public static final int digital_config_text=0x7f070043;
+        public static final int snow_config_background =0x7f07003f;
+        public static final int snow_config_hours =0x7f070040;
+        public static final int snow_config_minutes =0x7f070041;
+        public static final int snow_config_seconds =0x7f070042;
+        public static final int snow_config_text =0x7f070043;
         public static final int dismiss_overlay_button_label=0x7f070029;
         public static final int fit_config_switch_text=0x7f070044;
         public static final int intro_message=0x7f070045;

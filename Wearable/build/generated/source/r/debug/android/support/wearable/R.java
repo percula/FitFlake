@@ -190,20 +190,20 @@ public final class R {
 		public static final int accept_deny_dialog_positive_bg = 0x7f02004c;
 		public static final int action_item_background = 0x7f02004d;
 		public static final int action_item_icon_background = 0x7f02004e;
-		public static final int card_background = 0x7f020050;
-		public static final int card_frame = 0x7f020051;
-		public static final int card_frame_pressed = 0x7f020052;
-		public static final int close_button = 0x7f020053;
-		public static final int generic_confirmation = 0x7f02007e;
-		public static final int generic_confirmation_animation = 0x7f02007f;
-		public static final int ic_cc_checkmark = 0x7f020080;
-		public static final int ic_cc_clear = 0x7f020081;
-		public static final int ic_full_cancel = 0x7f020082;
-		public static final int ic_full_sad = 0x7f020083;
-		public static final int ic_more_horiz_24dp_wht = 0x7f020086;
-		public static final int ic_more_vert_24dp_wht = 0x7f020087;
-		public static final int open_on_phone = 0x7f020088;
-		public static final int open_on_phone_animation = 0x7f020089;
+		public static final int card_background = 0x7f02004f;
+		public static final int card_frame = 0x7f020050;
+		public static final int card_frame_pressed = 0x7f020051;
+		public static final int close_button = 0x7f020052;
+		public static final int generic_confirmation = 0x7f02007d;
+		public static final int generic_confirmation_animation = 0x7f02007e;
+		public static final int ic_cc_checkmark = 0x7f02007f;
+		public static final int ic_cc_clear = 0x7f020080;
+		public static final int ic_full_cancel = 0x7f020081;
+		public static final int ic_full_sad = 0x7f020082;
+		public static final int ic_more_horiz_24dp_wht = 0x7f020084;
+		public static final int ic_more_vert_24dp_wht = 0x7f020085;
+		public static final int open_on_phone = 0x7f020086;
+		public static final int open_on_phone_animation = 0x7f020087;
 	}
 	public static final class fraction {
 		public static final int action_drawer_item_first_item_top_padding = 0x7f0e0002;

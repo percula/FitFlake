@@ -21,21 +21,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_55151a81653dedbb28f585158cea4335b5a066ad/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.android.support/support-v13/24.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="e3c7e8ff9f476d0d93ee7b046fbe8037a2b822c0">
         <dex dex="/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v13-24.2.1_4a879a287ab139382a8129dda2f5e042aeda80f1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_55151a81653dedbb28f585158cea4335b5a066ad/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -232,7 +232,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="1c18a14904198af98067d25d3d46b8d3fc06b96a">
+        sha1="61d09c44b21cb00e63bb9170544b44ac90f104cf">
         <dex dex="/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_3f67ad410aa880373bffe715284b4d7b6c390522/classes.dex" />
     </item>
     <item
@@ -664,7 +664,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="7b5b91df855b9b62b7a22f06a429f1efa050b529">
+        sha1="85c7fa9cb2eeebb4a9aaf61c5e25206f4483fbb8">
         <dex dex="/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_acef4114704a530ab79569d8e7b0e7904e6300ce/classes.dex" />
     </item>
     <item

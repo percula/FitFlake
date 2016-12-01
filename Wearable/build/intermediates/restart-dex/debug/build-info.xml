@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="armeabi-v7a,armeabi"
+    api-level="23"
+    density="280dpi"
+    format="8"
+    plugin-version="2.2.2"
+    timestamp="94703893146363"
+    token="-4943861150270402467"
+    verifier="FULL_BUILD_REQUESTED" >
+
+    <task
+        name="javac"
+        duration="240" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="305" />
+    <task
+        name="verifier"
+        duration="16" />
+
+    <artifact
+        location="/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/outputs/apk/Wearable-debug.apk"
+        type="MAIN" />
+
+    <build
+        timestamp="94703893146363"
+        verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/outputs/apk/Wearable-debug.apk"
+            type="MAIN" />
+    </build>
+
+</instant-run>

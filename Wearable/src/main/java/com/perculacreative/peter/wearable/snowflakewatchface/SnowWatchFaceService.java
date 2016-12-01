@@ -841,6 +841,12 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
                         mCenterY - mSecondHandLength, mHandPaint);
             }
             canvas.drawCircle(mCenterX, mCenterY, HAND_END_CAP_RADIUS, mHandPaint);
+
+//            // Test draw text
+//            Paint textPaint = new Paint(mHandPaint);
+//            textPaint.setTextSize(200f);
+//            canvas.drawText("TEST", mCenterX, mCenterY, textPaint);
+
             // restore the canvas' original orientation.
             canvas.restore();
 
