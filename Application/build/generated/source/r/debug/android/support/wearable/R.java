@@ -120,19 +120,19 @@ public final class R {
 		public static final int circular_button_elevation = 0x7f080056;
 		public static final int circular_button_elevation_pressed = 0x7f080057;
 		public static final int close_button_diameter = 0x7f080058;
-		public static final int diag_button_bottom_padding = 0x7f080059;
-		public static final int diag_button_bottom_padding_round = 0x7f08005a;
-		public static final int diag_button_side_padding_right_round = 0x7f08005b;
-		public static final int diag_content_bottom_padding = 0x7f08005c;
-		public static final int diag_content_side_padding = 0x7f08005d;
-		public static final int diag_content_side_padding_round = 0x7f08005e;
-		public static final int diag_content_top_padding = 0x7f08005f;
-		public static final int diag_content_top_padding_round = 0x7f080060;
-		public static final int diag_floating_height = 0x7f080061;
-		public static final int diag_shade_height_rect = 0x7f080062;
-		public static final int diag_shade_height_round = 0x7f080063;
-		public static final int dismiss_padding = 0x7f080066;
-		public static final int item_touch_helper_max_drag_scroll_per_frame = 0x7f08006a;
+		public static final int diag_button_bottom_padding = 0x7f08005b;
+		public static final int diag_button_bottom_padding_round = 0x7f08005c;
+		public static final int diag_button_side_padding_right_round = 0x7f08005d;
+		public static final int diag_content_bottom_padding = 0x7f08005e;
+		public static final int diag_content_side_padding = 0x7f08005f;
+		public static final int diag_content_side_padding_round = 0x7f080060;
+		public static final int diag_content_top_padding = 0x7f080061;
+		public static final int diag_content_top_padding_round = 0x7f080062;
+		public static final int diag_floating_height = 0x7f080063;
+		public static final int diag_shade_height_rect = 0x7f080064;
+		public static final int diag_shade_height_round = 0x7f080065;
+		public static final int dismiss_padding = 0x7f080068;
+		public static final int item_touch_helper_max_drag_scroll_per_frame = 0x7f08006c;
 	}
 	public static final class drawable {
 		public static final int card_background = 0x7f020053;

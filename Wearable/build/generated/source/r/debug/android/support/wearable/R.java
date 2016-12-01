@@ -18,7 +18,7 @@ public final class R {
 		public static final int circular_image_button_anim = 0x7f050000;
 	}
 	public static final class array {
-		public static final int progress_spinner_sequence = 0x7f0f0002;
+		public static final int progress_spinner_sequence = 0x7f0f0001;
 	}
 	public static final class attr {
 		public static final int action_menu = 0x7f010114;

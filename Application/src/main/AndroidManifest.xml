@@ -15,7 +15,7 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.example.android.wearable.watchface" >
+        package="com.perculacreative.peter.wearable.snowflakewatchface" >
 
     <uses-sdk android:minSdkVersion="18"
               android:targetSdkVersion="23" />
@@ -27,56 +27,20 @@
     no runtime permissions are needed on the phone side. -->
     <uses-permission android:name="android.permission.READ_CALENDAR" />
 
-    <!-- Location permission used by FitDistanceWatchFaceService -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <!-- All intent-filters for config actions must include the categories
         com.google.android.wearable.watchface.category.COMPANION_CONFIGURATION and
         android.intent.category.DEFAULT. -->
     <application
             android:allowBackup="true"
             android:icon="@drawable/ic_launcher"
-            android:label="@string/app_name"
+            android:label="WatchfaceAppTry4"
             android:theme="@style/AppTheme" >
 
         <activity
-                android:name=".AnalogAndCardBoundsWatchFaceConfigActivity"
-                android:label="@string/app_name">
+                android:name="com.perculacreative.peter.wearable.snowflakewatchface.DigitalWatchFaceCompanionConfigActivity"
+                android:label="WatchfaceTry4">
             <intent-filter>
-                <action android:name="com.example.android.wearable.watchface.CONFIG_ANALOG" />
-                <action android:name="com.example.android.wearable.watchface.CONFIG_CARD_BOUNDS" />
-                <category android:name="com.google.android.wearable.watchface.category.COMPANION_CONFIGURATION" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity
-                android:name=".DigitalWatchFaceCompanionConfigActivity"
-                android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="com.example.android.wearable.watchface.CONFIG_DIGITAL" />
-                <category android:name="com.google.android.wearable.watchface.category.COMPANION_CONFIGURATION" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <!-- This activity is needed to allow the user to authorize Google Fit for the Fit Distance
-             WatchFace (required to view distance). -->
-        <activity
-            android:name=".FitDistanceWatchFaceConfigActivity"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="com.example.android.wearable.watchface.CONFIG_FIT_DISTANCE" />
-                <category android:name="com.google.android.wearable.watchface.category.COMPANION_CONFIGURATION" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity
-                android:name=".OpenGLWatchFaceConfigActivity"
-                android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="com.example.android.wearable.watchface.CONFIG_OPENGL" />
+                <action android:name="com.perculacreative.peter.wearable.snowflakewatchface.CONFIG_SNOWFLAKE" />
                 <category android:name="com.google.android.wearable.watchface.category.COMPANION_CONFIGURATION" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

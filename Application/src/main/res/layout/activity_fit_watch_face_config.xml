@@ -20,7 +20,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    tools:context="com.example.android.wearable.watchface.FitDistanceWatchFaceConfigActivity">
+    tools:context="com.perculacreative.peter.wearable.snowflakewatchface.FitDistanceWatchFaceConfigActivity">
 
     <Switch
         android:id="@+id/fit_auth_switch"

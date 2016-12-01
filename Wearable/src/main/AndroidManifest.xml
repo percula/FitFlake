@@ -14,7 +14,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<manifest package="com.example.android.wearable.watchface"
+<manifest package="com.perculacreative.peter.wearable.snowflakewatchface"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-sdk
@@ -54,7 +54,7 @@
         <activity android:name="android.support.wearable.complications.ComplicationHelperActivity"/>
 
         <service
-            android:name=".DigitalWatchFaceService"
+            android:name="com.perculacreative.peter.wearable.snowflakewatchface.SnowWatchFaceService"
             android:label="@string/digital_name"
             android:permission="android.permission.BIND_WALLPAPER">
             <meta-data
@@ -66,12 +66,12 @@
             <meta-data
                 android:name="com.google.android.wearable.watchface.preview_circular"
                 android:resource="@drawable/preview_digital_circular"/>
-            <meta-data
-                android:name="com.google.android.wearable.watchface.companionConfigurationAction"
-                android:value="com.example.android.wearable.watchface.CONFIG_DIGITAL"/>
+            <!--<meta-data-->
+                <!--android:name="com.google.android.wearable.watchface.companionConfigurationAction"-->
+                <!--android:value="com.perculacreative.peter.wearable.snowflakewatchface.CONFIG_SNOWFLAKE"/>-->
             <meta-data
                 android:name="com.google.android.wearable.watchface.wearableConfigurationAction"
-                android:value="com.example.android.wearable.watchface.CONFIG_DIGITAL"/>
+                android:value="com.perculacreative.peter.wearable.snowflakewatchface.CONFIG_SNOWFLAKE"/>
 
             <intent-filter>
                 <action android:name="android.service.wallpaper.WallpaperService"/>
@@ -87,17 +87,17 @@
         -->
 
         <activity
-            android:name=".DigitalWatchFaceWearableConfigActivity"
+            android:name="com.perculacreative.peter.wearable.snowflakewatchface.SnowWatchFaceWearableConfigActivity"
             android:label="@string/digital_config_name">
             <intent-filter>
-                <action android:name="com.example.android.wearable.watchface.CONFIG_DIGITAL"/>
+                <action android:name="com.perculacreative.peter.wearable.snowflakewatchface.CONFIG_SNOWFLAKE"/>
 
                 <category android:name="com.google.android.wearable.watchface.category.WEARABLE_CONFIGURATION"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 
-        <service android:name=".DigitalWatchFaceConfigListenerService">
+        <service android:name="com.perculacreative.peter.wearable.snowflakewatchface.SnowWatchFaceConfigListenerService">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED"/>
 
@@ -108,10 +108,6 @@
             </intent-filter>
         </service>
 
-        <service
-            android:name=".provider.UpdateComplicationDataService"
-            android:exported="false">
-        </service>
     </application>
 
 </manifest>
