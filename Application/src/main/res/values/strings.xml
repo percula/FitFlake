@@ -14,6 +14,8 @@
  limitations under the License.
 -->
 <resources>
+    <string name="app_name">Snowflake Watchface</string>
+
     <string name="snow_config_text">Snowflake watch face configuration</string>
     <string name="snow_config_background">Background</string>
     <string name="snow_config_hours">Hours</string>

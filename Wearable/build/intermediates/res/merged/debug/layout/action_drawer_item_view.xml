@@ -12,7 +12,6 @@
         android:layout_height="@dimen/action_drawer_item_icon_size"
         android:layout_gravity="center_vertical"
         android:background="@drawable/action_item_icon_background"
-        android:tint="?android:attr/colorBackground"
         android:padding="@dimen/action_drawer_item_icon_padding"
         android:scaleType="fitCenter" />
 
@@ -23,3 +22,4 @@
         style="@style/WearableActionDrawerItemText"/>
 
 </LinearLayout>
+<!-- From: file:/tmp/tmp-deduplicated574725355717134199/third_party/java_src/android_libs/android_wear/wearable_support/java/android/support/wearable/res/layout/action_drawer_item_view.xml -->

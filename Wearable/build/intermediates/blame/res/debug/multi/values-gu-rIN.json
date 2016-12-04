@@ -368,8 +368,27 @@
                     "startLine": 21,
                     "startColumn": 4,
                     "startOffset": 1999,
+                    "endColumn": 91,
+                    "endOffset": 2086
+                },
+                "from": {
+                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha2/res/values-gu-rIN/values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 262,
+                        "endColumn": 91,
+                        "endOffset": 349
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 2091,
                     "endColumn": 100,
-                    "endOffset": 2095
+                    "endOffset": 2187
                 },
                 "from": {
                     "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/res/values-gu-rIN/values-gu-rIN.xml",

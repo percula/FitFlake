@@ -43,6 +43,11 @@ import android.view.WindowInsets;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.fitness.Fitness;
+import com.google.android.gms.fitness.FitnessStatusCodes;
+import com.google.android.gms.fitness.data.DataType;
 import com.google.android.gms.wearable.DataApi;
 import com.google.android.gms.wearable.DataEvent;
 import com.google.android.gms.wearable.DataEventBuffer;
@@ -89,8 +94,10 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
         return new Engine();
     }
 
-    private class Engine extends CanvasWatchFaceService.Engine implements DataApi.DataListener,
-            GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+    private class Engine extends CanvasWatchFaceService.Engine implements
+            DataApi.DataListener,
+            GoogleApiClient.ConnectionCallbacks,
+            GoogleApiClient.OnConnectionFailedListener{
         static final String COLON_STRING = ":";
 
         /** Alpha value for drawing time when in mute mode. */
@@ -162,9 +169,11 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
         private int mWatchRestHandColor;
         private int mWatchHandShadowColor;
 
-        private float mHourHandLength;
+        private float mHourHandRadius;
         private float mMinuteHandLength;
         private float mSecondHandLength;
+
+        private int mCount;
 
         private int mWidth;
         private int mHeight;
@@ -177,15 +186,12 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
         private static final float STROKE_REST_WIDTH = 4f;
 
         private static final int SHADOW_RADIUS = 6;
-
         private static final float HOUR_STROKE_WIDTH = 5f;
         private static final float MINUTE_STROKE_WIDTH = 3f;
         private static final float SECOND_TICK_STROKE_WIDTH = 2f;
-
-        private static final float CENTER_GAP_AND_CIRCLE_RADIUS = 4f;
-
+        private static final float CENTER_GAP_AND_CIRCLE_RADIUS = 30f;
         private static final float mHourScaleFactor = 1.1f;
-
+        private Rect mCardBounds = new Rect();
 
         Paint mDatePaint;
         Paint mHourPaint;
@@ -228,6 +234,12 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
         private boolean mBurnInProtection;
         private boolean mAmbient;
 
+        private GoogleApiClient mStepsGoogleApiClient;
+
+        private boolean mStepsRequested;
+
+        private int mStepsTotal = 0;
+
 
         @Override
         public void onCreate(SurfaceHolder holder) {
@@ -235,6 +247,18 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
                 Log.d(TAG, "onCreate");
             }
             super.onCreate(holder);
+
+//            mStepsRequested = false;
+//            mStepsGoogleApiClient = new GoogleApiClient.Builder(SnowWatchFaceService.this)
+//                    .addConnectionCallbacks(this)
+//                    .addOnConnectionFailedListener(this)
+//                    .addApi(Fitness.HISTORY_API)
+//                    .addApi(Fitness.RECORDING_API)
+//                    // When user has multiple accounts, useDefaultAccount() allows Google Fit to
+//                    // associated with the main account for steps. It also replaces the need for
+//                    // a scope request.
+//                    .useDefaultAccount()
+//                    .build();
 
             setWatchFaceStyle(new WatchFaceStyle.Builder(SnowWatchFaceService.this)
                     .setCardPeekMode(WatchFaceStyle.PEEK_MODE_VARIABLE)
@@ -361,6 +385,7 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
 
             if (visible) {
                 mGoogleApiClient.connect();
+//                mStepsGoogleApiClient.connect();
 
                 registerReceiver();
 
@@ -374,6 +399,10 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
                     Wearable.DataApi.removeListener(mGoogleApiClient, this);
                     mGoogleApiClient.disconnect();
                 }
+
+//                if (mStepsGoogleApiClient != null && mStepsGoogleApiClient.isConnected()) {
+//                    mStepsGoogleApiClient.disconnect();
+//                }
             }
 
             // Whether the timer should be running depends on whether we're visible (as well as
@@ -455,8 +484,31 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
             if (Log.isLoggable(TAG, Log.DEBUG)) {
                 Log.d(TAG, "onTimeTick: ambient = " + isInAmbientMode());
             }
-            invalidate();
+
+//            getTotalSteps();
+//
+//            invalidate();
         }
+
+//        private void getTotalSteps() {
+//            if (Log.isLoggable(TAG, Log.DEBUG)) {
+//                Log.d(TAG, "getTotalSteps()");
+//            }
+//
+//            if ((mStepsGoogleApiClient != null)
+//                    && (mStepsGoogleApiClient.isConnected())
+//                    && (!mStepsRequested)) {
+//
+//                mStepsRequested = true;
+//
+//                PendingResult<DailyTotalResult> stepsResult =
+//                        Fitness.HistoryApi.readDailyTotal(
+//                                mStepsGoogleApiClient,
+//                                DataType.TYPE_STEP_COUNT_DELTA);
+//
+//                stepsResult.setResultCallback(this);
+//            }
+//        }
 
         @Override
         public void onAmbientModeChanged(boolean inAmbientMode) {
@@ -521,7 +573,7 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
             /*
              * Calculate the lengths of the watch hands and store them in member variables.
              */
-            mHourHandLength = mCenterX * 0.5f;
+            mHourHandRadius = mCenterX * 0.5f;
             mMinuteHandLength = mCenterX * 0.7f;
             mSecondHandLength = mCenterX * 0.9f;
 
@@ -621,81 +673,46 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
         }
 
         @Override
-        public void onDraw(Canvas canvas, Rect bounds) {
-//            long now = System.currentTimeMillis();
-//            mCalendar.setTimeInMillis(now);
-//            mDate.setTime(now);
-//            boolean is24Hour = DateFormat.is24HourFormat(SnowWatchFaceService.this);
-//
-//            // Show colons for the first half of each second so the colons blink on when the time
-//            // updates.
-//            mShouldDrawColons = (System.currentTimeMillis() % 1000) < 500;
-//
-            // Draw the background.
-            canvas.drawRect(0, 0, bounds.width(), bounds.height(), mBackgroundPaint);
-//
-//            // Draw the hours.
-//            float x = mXOffset;
-//            String hourString;
-//            if (is24Hour) {
-//                hourString = formatTwoDigitNumber(mCalendar.get(Calendar.HOUR_OF_DAY));
-//            } else {
-//                int hour = mCalendar.get(Calendar.HOUR);
-//                if (hour == 0) {
-//                    hour = 12;
-//                }
-//                hourString = String.valueOf(hour);
-//            }
-//            canvas.drawText(hourString, x, mYOffset, mHourPaint);
-//            x += mHourPaint.measureText(hourString);
-//
-//            // In ambient and mute modes, always draw the first colon. Otherwise, draw the
-//            // first colon for the first half of each second.
-//            if (isInAmbientMode() || mMute || mShouldDrawColons) {
-//                canvas.drawText(COLON_STRING, x, mYOffset, mColonPaint);
-//            }
-//            x += mColonWidth;
-//
-//            // Draw the minutes.
-//            String minuteString = formatTwoDigitNumber(mCalendar.get(Calendar.MINUTE));
-//            canvas.drawText(minuteString, x, mYOffset, mMinutePaint);
-//            x += mMinutePaint.measureText(minuteString);
-//
-//            // In unmuted interactive mode, draw a second blinking colon followed by the seconds.
-//            // Otherwise, if we're in 12-hour mode, draw AM/PM
-//            if (!isInAmbientMode() && !mMute) {
-//                if (mShouldDrawColons) {
-//                    canvas.drawText(COLON_STRING, x, mYOffset, mColonPaint);
-//                }
-//                x += mColonWidth;
-//                canvas.drawText(formatTwoDigitNumber(
-//                        mCalendar.get(Calendar.SECOND)), x, mYOffset, mSecondPaint);
-//            } else if (!is24Hour) {
-//                x += mColonWidth;
-//                canvas.drawText(getAmPmString(
-//                        mCalendar.get(Calendar.AM_PM)), x, mYOffset, mAmPmPaint);
-//            }
-//
-//            // Only render the day of week and date if there is no peek card, so they do not bleed
-//            // into each other in ambient mode.
-//            if (getPeekCardPosition().isEmpty()) {
-//                // Day of week
-//                canvas.drawText(
-//                        mDayOfWeekFormat.format(mDate),
-//                        mXOffset, mYOffset + mLineHeight, mDatePaint);
-//                // Date
-//                canvas.drawText(
-//                        mDateFormat.format(mDate),
-//                        mXOffset, mYOffset + mLineHeight * 2, mDatePaint);
-//            }
-
-            drawSnowflakeHands(canvas);
+        public void onPeekCardPositionUpdate(Rect rect) {
+            super.onPeekCardPositionUpdate(rect);
+            mCardBounds.set(rect);
         }
 
-        private void drawSnowflakeHands(Canvas canvas) {
+        @Override
+        public void onDraw(Canvas canvas, Rect bounds) {
             long now = System.currentTimeMillis();
             mCalendar.setTimeInMillis(now);
+            mDate.setTime(now);
 
+            // Draw the background.
+            drawBackground(canvas);
+
+            // Draw tickmarks
+            drawTicks(canvas);
+
+            // Draw digital time
+//            drawDigital(canvas);
+
+            // Draw snowflake
+            drawMorphSnowflake(canvas);
+
+            // Draw snowflake watch hands
+//            drawSnowflakeHands(canvas);
+
+            // Draw analog time
+            drawAnalogHands(canvas);
+
+            // Draw center text
+            SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm",java.util.Locale.getDefault());
+            String time = timeFormat.format(mCalendar.getTime());
+            drawCenterText(canvas, time);
+//            drawCenterText(canvas,Integer.toString(mCount));
+
+            // Draw background for peek cards
+//            drawCardBackground(canvas);
+        }
+
+        private void drawBackground(Canvas canvas) {
             if (mAmbient && (mLowBitAmbient || mBurnInProtection)) {
                 canvas.drawColor(Color.BLACK);
             } else if (mBackgroundBitmap == null) {
@@ -705,7 +722,9 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
             } else {
                 canvas.drawBitmap(mBackgroundBitmap, 0, 0, mBackgroundPaint);
             }
+        }
 
+        private void drawTicks(Canvas canvas) {
             /*
              * Draw ticks. Usually you will want to bake this directly into the photo, but in
              * cases where you want to allow users to select their own photos, this dynamically
@@ -722,7 +741,241 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
                 canvas.drawLine(mCenterX + innerX, mCenterY + innerY,
                         mCenterX + outerX, mCenterY + outerY, mSnowflakePaint);
             }
+        }
 
+        private void drawCardBackground(Canvas canvas) {
+            if (mAmbient) {
+                canvas.drawRect(mCardBounds, mBackgroundPaint);
+            }
+        }
+
+        private void drawCenterText(Canvas canvas, String text) {
+            // Test draw text
+            Paint textPaint = new Paint(mHandPaint);
+            float textSize = 20f;
+            textPaint.setTextSize(textSize);
+            textPaint.setStrokeWidth(STROKE_WIDTH / 4);
+            textPaint.setTextAlign(Paint.Align.CENTER);
+            canvas.drawText(text, mCenterX, mCenterY+textSize/3, textPaint);
+        }
+
+        private void drawMorphSnowflake(Canvas canvas) {
+             /*
+             * These calculations reflect the rotation in degrees per unit of time, e.g.,
+             * 360 / 60 = 6 and 360 / 12 = 30.
+             */
+            final float seconds =
+                    (mCalendar.get(Calendar.SECOND) + mCalendar.get(Calendar.MILLISECOND) / 1000f);
+            final float minutes = mCalendar.get(Calendar.MINUTE);
+            final float hours = mCalendar.get(Calendar.HOUR_OF_DAY);
+            final int time = (int) ((hours * 60 * 60) + (minutes * 60) + seconds);
+            final int timeCount = time / 14;
+            final int count = timeCount;
+            mCount = count;
+
+            final float hourHandOffset = mCalendar.get(Calendar.MINUTE) / 2f;
+            final float hoursRotation = (mCalendar.get(Calendar.HOUR) * 30) + hourHandOffset;
+
+            // save the canvas state before we begin to rotate it
+            canvas.save();
+
+            // Align with the hour hand
+            canvas.rotate(hoursRotation, mCenterX, mCenterY);
+
+            float maxInnerRadius = mHourHandRadius;
+            float maxInnerStubLength = mHourHandRadius / 10;
+
+            float[] threshold = new float[]{-500, 1000, 2000, 3000, 5000, 8000, 10000};
+
+            if (count < threshold[1]) {
+                // Draw 6 pointed snowflake that grows as count increases
+                drawSnowflake(
+                        canvas,
+                        6,
+                        CENTER_GAP_AND_CIRCLE_RADIUS,
+                        ((count - threshold[0]) / (threshold[1] - threshold[0])) * maxInnerRadius,
+                        2,
+                        ((count - threshold[0]) / (threshold[1] - threshold[0])) * maxInnerStubLength,
+                        0f);
+            } else if (count < threshold[2]) {
+                // Draw 6 pointed snowflake that stays the same
+                drawSnowflake(
+                        canvas,
+                        6,
+                        CENTER_GAP_AND_CIRCLE_RADIUS,
+                        maxInnerRadius,
+                        2,
+                        maxInnerStubLength,
+                        0f);
+
+                // Draw 6 pointed snowflake that grows as count increases
+                drawSnowflake(
+                        canvas,
+                        6,
+                        CENTER_GAP_AND_CIRCLE_RADIUS,
+                        ((count - threshold[1]) / (threshold[2] - threshold[1])) * maxInnerRadius*3/2,
+                        3,
+                        ((count - threshold[1]) / (threshold[2] - threshold[1])) * maxInnerStubLength/2,
+                        30f);
+            } else if (count < threshold[3]) {
+                // Draw 6 pointed snowflake that shrinks to nothing as count increases
+                drawSnowflake(
+                        canvas,
+                        6,
+                        CENTER_GAP_AND_CIRCLE_RADIUS,
+                        maxInnerRadius - ((count - threshold[2]) / (threshold[3] - threshold[2])) * maxInnerRadius,
+                        2,
+                        maxInnerStubLength - ((count - threshold[2]) / (threshold[3] - threshold[2])) * maxInnerStubLength,
+                        0f);
+
+                // Draw 6 pointed snowflake that rotates left as count increases
+                drawSnowflake(
+                        canvas,
+                        6,
+                        CENTER_GAP_AND_CIRCLE_RADIUS,
+                        maxInnerRadius*3/2,
+                        3,
+                        maxInnerStubLength/2,
+                        30f - ((count - threshold[2]) / (threshold[3] - threshold[2]))* 15f);
+
+                // Draw 6 pointed snowflake that shrinks and rotates right as count increases
+                drawSnowflake(
+                        canvas,
+                        6,
+                        CENTER_GAP_AND_CIRCLE_RADIUS,
+                        maxInnerRadius*3/2 - ((count - threshold[2]) / (threshold[3] - threshold[2])) * maxInnerRadius*3/4,
+                        3,
+                        maxInnerStubLength/2 - ((count - threshold[2]) / (threshold[3] - threshold[2])) * maxInnerStubLength/4,
+                        30f + ((count - threshold[2]) / (threshold[3] - threshold[2]))* 15f);
+            } else if (count < threshold[4]) {
+                // Draw 6 pointed large snowflake that stays the same size
+                drawSnowflake(
+                        canvas,
+                        6,
+                        CENTER_GAP_AND_CIRCLE_RADIUS,
+                        maxInnerRadius*3/2,
+                        3 + count % 3,
+                        maxInnerStubLength/2,
+                        15f);
+
+                // Draw 6 pointed small snowflake that stays the same size
+                drawSnowflake(
+                        canvas,
+                        6,
+                        CENTER_GAP_AND_CIRCLE_RADIUS,
+                        maxInnerRadius*3/4,
+                        3,
+                        maxInnerStubLength/4,
+                        45f);
+
+                // Draw mini snowflakes that grow and move outward in the spaces in-between
+                drawMiniSnowflake(
+                        canvas,
+                        6,
+                        maxInnerRadius + ((count - threshold[3]) / (threshold[4] - threshold[3])) * maxInnerRadius / 4,
+                        8,
+                        ((count - threshold[3]) / (threshold[4] - threshold[3])) * maxInnerStubLength,
+                        45f);
+            } else {
+                // Draw 6 pointed large snowflake that stays the same size
+                drawSnowflake(
+                        canvas,
+                        6,
+                        CENTER_GAP_AND_CIRCLE_RADIUS,
+                        maxInnerRadius * 3 / 2,
+                        3 + count % 3,
+                        maxInnerStubLength / 2,
+                        15f);
+
+                // Draw 6 pointed small snowflake that stays the same size
+                drawSnowflake(
+                        canvas,
+                        6,
+                        CENTER_GAP_AND_CIRCLE_RADIUS,
+                        maxInnerRadius * 3 / 4,
+                        3 - count % 2,
+                        maxInnerStubLength / 4,
+                        45f);
+
+                // Draw mini snowflakes that grow and move outward in the spaces in-between
+                drawMiniSnowflake(
+                        canvas,
+                        6,
+                        maxInnerRadius * 5 / 4,
+                        8,
+                        maxInnerStubLength + (count % 8) * maxInnerStubLength / 8,
+                        45f);
+            }
+
+            // restore the canvas' original orientation.
+            canvas.restore();
+
+        }
+
+        private void drawSnowflake(Canvas canvas, int points, float innerRadius, float outerRadius, int stubs, float stubLength, float angleOffset) {
+            // Rotate to offset position
+            canvas.rotate(angleOffset, mCenterX, mCenterY);
+
+            // Prepare the inner snowflake
+            for (int i = 0; i < points; i++) {
+
+                float length = outerRadius - innerRadius;
+
+                for (int j = 0; j < stubs; j++) {
+                    float yTickStart = mCenterY - innerRadius - (length / (stubs + 1)) * (j + 1);
+
+                    canvas.drawLine(mCenterX,
+                            yTickStart,
+                            mCenterX - stubLength * (stubs - j),
+                            yTickStart - stubLength * (stubs - j),
+                            mSnowflakePaint);
+                    canvas.drawLine(mCenterX,
+                            yTickStart,
+                            mCenterX + stubLength * (stubs - j),
+                            yTickStart - stubLength * (stubs - j),
+                            mSnowflakePaint);
+                }
+
+                canvas.drawLine(
+                        mCenterX,
+                        mCenterY - innerRadius,
+                        mCenterX,
+                        mCenterY - outerRadius,
+                        mSnowflakePaint);
+
+                canvas.rotate(360 / points, mCenterX, mCenterY);
+            }
+
+            // Rotate back to starting position
+            canvas.rotate(-angleOffset, mCenterX, mCenterY);
+        }
+
+        private void drawMiniSnowflake(Canvas canvas, int points, float radius, int stubs, float stubLength, float angleOffset) {
+            // Rotate to offset position
+            canvas.rotate(angleOffset, mCenterX, mCenterY);
+
+            // Prepare the inner snowflake
+            for (int i = 0; i < points; i++) {
+
+                for (int j = 0; j < stubs; j++) {
+
+                    float yCenter = mCenterY - radius;
+
+                    canvas.drawLine(mCenterX,
+                            yCenter,
+                            mCenterX,
+                            yCenter - stubLength,
+                            mSnowflakePaint);
+                    canvas.rotate(360/stubs,mCenterX,yCenter);
+                }
+                canvas.rotate(360 / points, mCenterX, mCenterY);
+            }
+
+            // Rotate back to starting position
+            canvas.rotate(-angleOffset, mCenterX, mCenterY);
+        }
+
+        private void drawSnowflakeHands(Canvas canvas) {
             /*
              * These calculations reflect the rotation in degrees per unit of time, e.g.,
              * 360 / 60 = 6 and 360 / 12 = 30.
@@ -749,7 +1002,7 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
             for (int i = 0; i < hourPoints; i++) {
 
                 for (int j = 0; j < hourStubs; j++) {
-                    float yTickStart = mCenterY - (mHourHandLength / (hourStubs + 1)) * (j + 1);
+                    float yTickStart = mCenterY - (mHourHandRadius / (hourStubs + 1)) * (j + 1);
 
                     canvas.drawLine(mCenterX,
                             yTickStart,
@@ -763,21 +1016,12 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
                             mSnowflakePaint);
                 }
 
-                if (i == 0) {
-                    canvas.drawLine(
-                            mCenterX,
-                            mCenterY - CENTER_GAP_AND_CIRCLE_RADIUS,
-                            mCenterX,
-                            mCenterY - mHourHandLength,
-                            mHourHandPaint);
-                } else {
-                    canvas.drawLine(
-                            mCenterX,
-                            mCenterY - CENTER_GAP_AND_CIRCLE_RADIUS,
-                            mCenterX,
-                            mCenterY - mHourHandLength,
-                            mSnowflakePaint);
-                }
+                canvas.drawLine(
+                        mCenterX,
+                        mCenterY - CENTER_GAP_AND_CIRCLE_RADIUS,
+                        mCenterX,
+                        mCenterY - mHourHandRadius,
+                        mSnowflakePaint);
 
                 canvas.rotate(360 / hourPoints, mCenterX, mCenterY);
             }
@@ -791,7 +1035,7 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
             float minutePadding = 6;
             float minuteStubLength = hourStubLength;
 
-            float minuteStartY = mCenterY - mHourHandLength - minutePadding;
+            float minuteStartY = mCenterY - mHourHandRadius - minutePadding;
             float minuteEndY = mCenterY - mMinuteHandLength;
             float minuteLength = minuteStartY - minuteEndY;
 
@@ -812,24 +1056,60 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
                             mSnowflakePaint);
                 }
 
-                if (i == 0) {
-                    canvas.drawLine(
-                            mCenterX,
-                            mCenterY - CENTER_GAP_AND_CIRCLE_RADIUS,
-                            mCenterX,
-                            minuteEndY,
-                            mHandPaint);
-                } else {
-                    canvas.drawLine(
-                            mCenterX,
-                            minuteStartY,
-                            mCenterX,
-                            minuteEndY,
-                            mSnowflakePaint);
-                }
+                canvas.drawLine(
+                        mCenterX,
+                        minuteStartY,
+                        mCenterX,
+                        minuteEndY,
+                        mSnowflakePaint);
 
                 canvas.rotate(360 / minutePoints, mCenterX, mCenterY);
             }
+
+            canvas.drawCircle(mCenterX, mCenterY, HAND_END_CAP_RADIUS, mHandPaint);
+
+            // restore the canvas' original orientation.
+            canvas.restore();
+        }
+
+        private void drawAnalogHands(Canvas canvas) {
+            /*
+             * These calculations reflect the rotation in degrees per unit of time, e.g.,
+             * 360 / 60 = 6 and 360 / 12 = 30.
+             */
+            final float seconds =
+                    (mCalendar.get(Calendar.SECOND) + mCalendar.get(Calendar.MILLISECOND) / 1000f);
+            final float secondsRotation = seconds * 6f;
+
+            final float minutesRotation = mCalendar.get(Calendar.MINUTE) * 6f;
+
+            final float hourHandOffset = mCalendar.get(Calendar.MINUTE) / 2f;
+            final float hoursRotation = (mCalendar.get(Calendar.HOUR) * 30) + hourHandOffset;
+
+            // save the canvas state before we begin to rotate it
+            canvas.save();
+
+            /* Prepare the hour snowflake*/
+            canvas.rotate(hoursRotation, mCenterX, mCenterY);
+
+            canvas.drawLine(
+                mCenterX,
+                mCenterY - CENTER_GAP_AND_CIRCLE_RADIUS,
+                mCenterX,
+                mCenterY - mHourHandRadius,
+                mHourHandPaint);
+
+            /* Prepare the minute snowflake */
+            canvas.rotate(minutesRotation - hoursRotation, mCenterX, mCenterY);
+
+            float minuteEndY = mCenterY - mMinuteHandLength;
+
+            canvas.drawLine(
+                    mCenterX,
+                    mCenterY - CENTER_GAP_AND_CIRCLE_RADIUS,
+                    mCenterX,
+                    minuteEndY,
+                    mHandPaint);
 
             /*
              * Make sure the "seconds" hand is drawn only when we are in interactive mode.
@@ -837,22 +1117,86 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
              */
             if (!mAmbient) {
                 canvas.rotate(secondsRotation - minutesRotation, mCenterX, mCenterY);
-                canvas.drawLine(mCenterX, mCenterY - HAND_END_CAP_RADIUS, mCenterX,
-                        mCenterY - mSecondHandLength, mHandPaint);
+                canvas.drawLine(mCenterX,
+                        mCenterY - CENTER_GAP_AND_CIRCLE_RADIUS,
+                        mCenterX,
+                        mCenterY - mSecondHandLength,
+                        mHandPaint);
             }
-            canvas.drawCircle(mCenterX, mCenterY, HAND_END_CAP_RADIUS, mHandPaint);
 
-//            // Test draw text
-//            Paint textPaint = new Paint(mHandPaint);
-//            textPaint.setTextSize(200f);
-//            canvas.drawText("TEST", mCenterX, mCenterY, textPaint);
+            // Draw center circle
+            canvas.drawCircle(mCenterX, mCenterY, CENTER_GAP_AND_CIRCLE_RADIUS, mHandPaint);
 
             // restore the canvas' original orientation.
             canvas.restore();
+        }
 
-//            if (mAmbient) {
-//                canvas.drawRect(mCardBounds, mBackgroundPaint);
-//            }
+        /**
+         * Draws the digital time on the canvas
+         * @param canvas
+         */
+        private void drawDigital(Canvas canvas) {
+            boolean is24Hour = DateFormat.is24HourFormat(SnowWatchFaceService.this);
+
+            // Show colons for the first half of each second so the colons blink on when the time
+            // updates.
+            mShouldDrawColons = (System.currentTimeMillis() % 1000) < 500;
+
+
+            // Draw the hours.
+            float x = mXOffset;
+            String hourString;
+            if (is24Hour) {
+                hourString = formatTwoDigitNumber(mCalendar.get(Calendar.HOUR_OF_DAY));
+            } else {
+                int hour = mCalendar.get(Calendar.HOUR);
+                if (hour == 0) {
+                    hour = 12;
+                }
+                hourString = String.valueOf(hour);
+            }
+            canvas.drawText(hourString, x, mYOffset, mHourPaint);
+            x += mHourPaint.measureText(hourString);
+
+            // In ambient and mute modes, always draw the first colon. Otherwise, draw the
+            // first colon for the first half of each second.
+            if (isInAmbientMode() || mMute || mShouldDrawColons) {
+                canvas.drawText(COLON_STRING, x, mYOffset, mColonPaint);
+            }
+            x += mColonWidth;
+
+            // Draw the minutes.
+            String minuteString = formatTwoDigitNumber(mCalendar.get(Calendar.MINUTE));
+            canvas.drawText(minuteString, x, mYOffset, mMinutePaint);
+            x += mMinutePaint.measureText(minuteString);
+
+            // In unmuted interactive mode, draw a second blinking colon followed by the seconds.
+            // Otherwise, if we're in 12-hour mode, draw AM/PM
+            if (!isInAmbientMode() && !mMute) {
+                if (mShouldDrawColons) {
+                    canvas.drawText(COLON_STRING, x, mYOffset, mColonPaint);
+                }
+                x += mColonWidth;
+                canvas.drawText(formatTwoDigitNumber(
+                        mCalendar.get(Calendar.SECOND)), x, mYOffset, mSecondPaint);
+            } else if (!is24Hour) {
+                x += mColonWidth;
+                canvas.drawText(getAmPmString(
+                        mCalendar.get(Calendar.AM_PM)), x, mYOffset, mAmPmPaint);
+            }
+
+            // Only render the day of week and date if there is no peek card, so they do not bleed
+            // into each other in ambient mode.
+            if (getPeekCardPosition().isEmpty()) {
+                // Day of week
+                canvas.drawText(
+                        mDayOfWeekFormat.format(mDate),
+                        mXOffset, mYOffset + mLineHeight, mDatePaint);
+                // Date
+                canvas.drawText(
+                        mDateFormat.format(mDate),
+                        mXOffset, mYOffset + mLineHeight * 2, mDatePaint);
+            }
         }
 
         /**
@@ -981,6 +1325,38 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
             }
             Wearable.DataApi.addListener(mGoogleApiClient, Engine.this);
             updateConfigDataItemAndUiOnStartup();
+
+//            if (Log.isLoggable(TAG, Log.DEBUG)) {
+//                Log.d(TAG, "mGoogleApiAndFitCallbacks.onConnected: " + connectionHint);
+//            }
+//            mStepsRequested = false;
+//
+//            // The subscribe step covers devices that do not have Google Fit installed.
+//            subscribeToSteps();
+//
+//            getTotalSteps();
+        }
+
+        /*
+         * Subscribes to step count (for phones that don't have Google Fit app).
+         */
+        private void subscribeToSteps() {
+            Fitness.RecordingApi.subscribe(mStepsGoogleApiClient, DataType.TYPE_STEP_COUNT_DELTA)
+                    .setResultCallback(new ResultCallback<Status>() {
+                        @Override
+                        public void onResult(Status status) {
+                            if (status.isSuccess()) {
+                                if (status.getStatusCode()
+                                        == FitnessStatusCodes.SUCCESS_ALREADY_SUBSCRIBED) {
+                                    Log.i(TAG, "Existing subscription for activity detected.");
+                                } else {
+                                    Log.i(TAG, "Successfully subscribed!");
+                                }
+                            } else {
+                                Log.i(TAG, "There was a problem subscribing.");
+                            }
+                        }
+                    });
         }
 
         @Override  // GoogleApiClient.ConnectionCallbacks
@@ -996,5 +1372,26 @@ public class SnowWatchFaceService extends CanvasWatchFaceService {
                 Log.d(TAG, "onConnectionFailed: " + result);
             }
         }
+
+//        @Override
+//        public void onResult(DailyTotalResult dailyTotalResult) {
+//            if (Log.isLoggable(TAG, Log.DEBUG)) {
+//                Log.d(TAG, "mGoogleApiAndFitCallbacks.onResult(): " + dailyTotalResult);
+//            }
+//
+//            mStepsRequested = false;
+//
+//            if (dailyTotalResult.getStatus().isSuccess()) {
+//
+//                List<DataPoint> points = dailyTotalResult.getTotal().getDataPoints();;
+//
+//                if (!points.isEmpty()) {
+//                    mStepsTotal = points.get(0).getValue(Field.FIELD_STEPS).asInt();
+//                    Log.d(TAG, "steps updated: " + mStepsTotal);
+//                }
+//            } else {
+//                Log.e(TAG, "onResult() failed! " + dailyTotalResult.getStatus().getStatusMessage());
+//            }
+//        }
     }
 }

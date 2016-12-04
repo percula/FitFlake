@@ -1682,18 +1682,18 @@
                     "startColumn": 4,
                     "startOffset": 17669,
                     "endLine": 245,
-                    "endColumn": 8,
-                    "endOffset": 17860
+                    "endColumn": 12,
+                    "endOffset": 17880
                 },
                 "from": {
-                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha3/res/values-v21/values.xml",
+                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha2/res/values-v21/values.xml",
                     "position": {
                         "startLine": 4,
-                        "startColumn": 0,
-                        "startOffset": 211,
+                        "startColumn": 4,
+                        "startOffset": 258,
                         "endLine": 7,
-                        "endColumn": 8,
-                        "endOffset": 402
+                        "endColumn": 12,
+                        "endOffset": 469
                     }
                 }
             },
@@ -1701,20 +1701,20 @@
                 "to": {
                     "startLine": 246,
                     "startColumn": 4,
-                    "startOffset": 17865,
+                    "startOffset": 17885,
                     "endLine": 248,
-                    "endColumn": 8,
-                    "endOffset": 17961
+                    "endColumn": 12,
+                    "endOffset": 17993
                 },
                 "from": {
-                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha3/res/values-v21/values.xml",
+                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha2/res/values-v21/values.xml",
                     "position": {
                         "startLine": 8,
-                        "startColumn": 0,
-                        "startOffset": 403,
+                        "startColumn": 4,
+                        "startOffset": 474,
                         "endLine": 10,
-                        "endColumn": 8,
-                        "endOffset": 499
+                        "endColumn": 12,
+                        "endOffset": 582
                     }
                 }
             },
@@ -1722,20 +1722,20 @@
                 "to": {
                     "startLine": 249,
                     "startColumn": 4,
-                    "startOffset": 17966,
+                    "startOffset": 17998,
                     "endLine": 252,
-                    "endColumn": 8,
-                    "endOffset": 18117
+                    "endColumn": 12,
+                    "endOffset": 18169
                 },
                 "from": {
-                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha3/res/values-v21/values.xml",
+                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha2/res/values-v21/values.xml",
                     "position": {
                         "startLine": 11,
-                        "startColumn": 0,
-                        "startOffset": 500,
+                        "startColumn": 4,
+                        "startOffset": 587,
                         "endLine": 14,
-                        "endColumn": 8,
-                        "endOffset": 651
+                        "endColumn": 12,
+                        "endOffset": 758
                     }
                 }
             },
@@ -1743,20 +1743,20 @@
                 "to": {
                     "startLine": 253,
                     "startColumn": 4,
-                    "startOffset": 18122,
+                    "startOffset": 18174,
                     "endLine": 256,
-                    "endColumn": 8,
-                    "endOffset": 18275
+                    "endColumn": 12,
+                    "endOffset": 18347
                 },
                 "from": {
-                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha3/res/values-v21/values.xml",
+                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha2/res/values-v21/values.xml",
                     "position": {
                         "startLine": 15,
-                        "startColumn": 0,
-                        "startOffset": 652,
+                        "startColumn": 4,
+                        "startOffset": 763,
                         "endLine": 18,
-                        "endColumn": 8,
-                        "endOffset": 805
+                        "endColumn": 12,
+                        "endOffset": 936
                     }
                 }
             },
@@ -1764,20 +1764,20 @@
                 "to": {
                     "startLine": 257,
                     "startColumn": 4,
-                    "startOffset": 18280,
+                    "startOffset": 18352,
                     "endLine": 263,
-                    "endColumn": 8,
-                    "endOffset": 18735
+                    "endColumn": 12,
+                    "endOffset": 18851
                 },
                 "from": {
-                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha3/res/values-v21/values.xml",
+                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha2/res/values-v21/values.xml",
                     "position": {
                         "startLine": 21,
-                        "startColumn": 0,
-                        "startOffset": 950,
+                        "startColumn": 4,
+                        "startOffset": 1144,
                         "endLine": 27,
-                        "endColumn": 8,
-                        "endOffset": 1405
+                        "endColumn": 12,
+                        "endOffset": 1643
                     }
                 }
             },
@@ -1785,20 +1785,20 @@
                 "to": {
                     "startLine": 264,
                     "startColumn": 4,
-                    "startOffset": 18740,
+                    "startOffset": 18856,
                     "endLine": 275,
-                    "endColumn": 8,
-                    "endOffset": 19383
+                    "endColumn": 12,
+                    "endOffset": 19583
                 },
                 "from": {
-                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha3/res/values-v21/values.xml",
+                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha2/res/values-v21/values.xml",
                     "position": {
                         "startLine": 30,
-                        "startColumn": 0,
-                        "startOffset": 1550,
+                        "startColumn": 4,
+                        "startOffset": 1851,
                         "endLine": 41,
-                        "endColumn": 8,
-                        "endOffset": 2193
+                        "endColumn": 12,
+                        "endOffset": 2578
                     }
                 }
             },
@@ -1806,20 +1806,20 @@
                 "to": {
                     "startLine": 276,
                     "startColumn": 4,
-                    "startOffset": 19388,
+                    "startOffset": 19588,
                     "endLine": 287,
-                    "endColumn": 8,
-                    "endOffset": 20030
+                    "endColumn": 12,
+                    "endOffset": 20314
                 },
                 "from": {
-                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha3/res/values-v21/values.xml",
+                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha2/res/values-v21/values.xml",
                     "position": {
                         "startLine": 42,
-                        "startColumn": 0,
-                        "startOffset": 2194,
+                        "startColumn": 4,
+                        "startOffset": 2583,
                         "endLine": 53,
-                        "endColumn": 8,
-                        "endOffset": 2836
+                        "endColumn": 12,
+                        "endOffset": 3309
                     }
                 }
             },
@@ -1827,20 +1827,20 @@
                 "to": {
                     "startLine": 288,
                     "startColumn": 4,
-                    "startOffset": 20035,
+                    "startOffset": 20319,
                     "endLine": 290,
-                    "endColumn": 8,
-                    "endOffset": 20203
+                    "endColumn": 12,
+                    "endOffset": 20499
                 },
                 "from": {
-                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha3/res/values-v21/values.xml",
+                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha2/res/values-v21/values.xml",
                     "position": {
                         "startLine": 54,
-                        "startColumn": 0,
-                        "startOffset": 2837,
+                        "startColumn": 4,
+                        "startOffset": 3314,
                         "endLine": 56,
-                        "endColumn": 8,
-                        "endOffset": 3005
+                        "endColumn": 12,
+                        "endOffset": 3494
                     }
                 }
             },
@@ -1848,20 +1848,20 @@
                 "to": {
                     "startLine": 291,
                     "startColumn": 4,
-                    "startOffset": 20208,
+                    "startOffset": 20504,
                     "endLine": 294,
-                    "endColumn": 8,
-                    "endOffset": 20387
+                    "endColumn": 12,
+                    "endOffset": 20703
                 },
                 "from": {
-                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha3/res/values-v21/values.xml",
+                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha2/res/values-v21/values.xml",
                     "position": {
                         "startLine": 57,
-                        "startColumn": 0,
-                        "startOffset": 3006,
+                        "startColumn": 4,
+                        "startOffset": 3499,
                         "endLine": 60,
-                        "endColumn": 8,
-                        "endOffset": 3185
+                        "endColumn": 12,
+                        "endOffset": 3698
                     }
                 }
             },
@@ -1869,20 +1869,20 @@
                 "to": {
                     "startLine": 295,
                     "startColumn": 4,
-                    "startOffset": 20392,
+                    "startOffset": 20708,
                     "endLine": 298,
-                    "endColumn": 8,
-                    "endOffset": 20569
+                    "endColumn": 12,
+                    "endOffset": 20905
                 },
                 "from": {
-                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha3/res/values-v21/values.xml",
+                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha2/res/values-v21/values.xml",
                     "position": {
                         "startLine": 61,
-                        "startColumn": 0,
-                        "startOffset": 3186,
+                        "startColumn": 4,
+                        "startOffset": 3703,
                         "endLine": 64,
-                        "endColumn": 8,
-                        "endOffset": 3363
+                        "endColumn": 12,
+                        "endOffset": 3900
                     }
                 }
             }

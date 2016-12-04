@@ -202,18 +202,18 @@
                     "startColumn": 4,
                     "startOffset": 2519,
                     "endLine": 39,
-                    "endColumn": 8,
-                    "endOffset": 2680
+                    "endColumn": 12,
+                    "endOffset": 2700
                 },
                 "from": {
-                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha3/res/values-v23/values.xml",
+                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha2/res/values-v23/values.xml",
                     "position": {
                         "startLine": 4,
-                        "startColumn": 0,
-                        "startOffset": 211,
+                        "startColumn": 4,
+                        "startOffset": 258,
                         "endLine": 7,
-                        "endColumn": 8,
-                        "endOffset": 372
+                        "endColumn": 12,
+                        "endOffset": 439
                     }
                 }
             },
@@ -221,20 +221,20 @@
                 "to": {
                     "startLine": 40,
                     "startColumn": 4,
-                    "startOffset": 2685,
+                    "startOffset": 2705,
                     "endLine": 43,
-                    "endColumn": 8,
-                    "endOffset": 2848
+                    "endColumn": 12,
+                    "endOffset": 2888
                 },
                 "from": {
-                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha3/res/values-v23/values.xml",
+                    "file": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/exploded-aar/com.google.android.support/wearable/2.0.0-alpha2/res/values-v23/values.xml",
                     "position": {
                         "startLine": 8,
-                        "startColumn": 0,
-                        "startOffset": 373,
+                        "startColumn": 4,
+                        "startOffset": 444,
                         "endLine": 11,
-                        "endColumn": 8,
-                        "endOffset": 536
+                        "endColumn": 12,
+                        "endOffset": 627
                     }
                 }
             }

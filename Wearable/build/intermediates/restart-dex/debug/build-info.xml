@@ -5,33 +5,40 @@
     density="280dpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="94703893146363"
+    timestamp="142080969333842"
     token="-4943861150270402467"
-    verifier="FULL_BUILD_REQUESTED" >
+    verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="240" />
+        duration="445" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="305" />
+        duration="26" />
     <task
         name="verifier"
-        duration="16" />
+        duration="2" />
 
     <artifact
-        location="/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/outputs/apk/Wearable-debug.apk"
-        type="MAIN" />
+        location="/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/transforms/dex/debug/folders/1000/5/slice_0/classes.dex"
+        type="DEX" />
 
     <build
-        timestamp="94703893146363"
+        timestamp="141772168254338"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/outputs/apk/Wearable-debug.apk"
             type="MAIN" />
+    </build>
+    <build
+        timestamp="142080969333842"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/transforms/dex/debug/folders/1000/5/slice_0/classes.dex"
+            type="DEX" />
     </build>
 
 </instant-run>

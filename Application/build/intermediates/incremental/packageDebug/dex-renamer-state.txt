@@ -1,7 +1,0 @@
-#Thu Dec 01 02:51:40 UTC 2016
-base.0=/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_abd4a4048213f9ca71e6596a9eb6ff278c83cacf
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_d9890d68bef74d1ba50a87dd98e2581a74d3bcca/classes.dex
-base.1=/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_d9890d68bef74d1ba50a87dd98e2581a74d3bcca
-file.0=/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_abd4a4048213f9ca71e6596a9eb6ff278c83cacf/classes.dex

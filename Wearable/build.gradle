@@ -20,15 +20,15 @@ repositories {
 
 dependencies {
 
-    compile 'com.android.support:palette-v7:24.1.1'
-    compile 'com.google.android.gms:play-services-fitness:9.4.0'
+    compile 'com.android.support:palette-v7:25.0.1'
+    compile 'com.google.android.gms:play-services-fitness:10.0.1'
 
 
-    compile 'com.google.android.gms:play-services-wearable:9.4.0'
-    compile 'com.android.support:support-v13:24.2.1'
+    compile 'com.google.android.gms:play-services-wearable:10.0.1'
+    compile 'com.android.support:support-v13:25.0.1'
     compile 'com.wada811:android-material-design-colors:3.0.0'
 
-    compile 'com.google.android.support:wearable:2.0.0-alpha3'
+    compile 'com.google.android.support:wearable:2.0.0-alpha2'
 
 }
 
@@ -43,14 +43,13 @@ List<String> dirs = [
 android {
     compileSdkVersion 25
 
-    buildToolsVersion "25.0.0"
+    buildToolsVersion "25.0.1"
 
     defaultConfig {
-        versionCode 1
-        versionName "1.0"
-
-        minSdkVersion 20
-
+        applicationId "com.perculacreative.peter.wearable.snowflakewatchface"
+        versionCode 3
+        versionName "1.2"
+        minSdkVersion 23
         targetSdkVersion 25
     }
 

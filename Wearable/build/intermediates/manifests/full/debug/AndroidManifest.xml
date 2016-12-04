@@ -16,11 +16,11 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.perculacreative.peter.wearable.snowflakewatchface"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="3"
+    android:versionName="1.2" >
 
     <uses-sdk
-        android:minSdkVersion="20"
+        android:minSdkVersion="23"
         android:targetSdkVersion="25" />
 
     <uses-feature android:name="android.hardware.type.watch" />
@@ -29,7 +29,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <!-- Required for complications to receive complication data and open the provider chooser. -->
-    <uses-permission android:name="com.google.android.wearable.permission.RECEIVE_COMPLICATION_DATA" />
+
 
     <!-- Calendar permission used by CalendarWatchFaceService -->
     <uses-permission android:name="android.permission.READ_CALENDAR" />
@@ -57,7 +57,33 @@
 
         <service
             android:name="com.perculacreative.peter.wearable.snowflakewatchface.SnowWatchFaceService"
-            android:label="@string/digital_name"
+            android:label="@string/snowflake_name"
+            android:permission="android.permission.BIND_WALLPAPER" >
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/watch_face" />
+            <meta-data
+                android:name="com.google.android.wearable.watchface.preview"
+                android:resource="@drawable/preview_snowflake" />
+            <meta-data
+                android:name="com.google.android.wearable.watchface.preview_circular"
+                android:resource="@drawable/preview_snowflake_circular" />
+            <!-- <meta-data -->
+            <!-- android:name="com.google.android.wearable.watchface.companionConfigurationAction" -->
+            <!-- android:value="com.perculacreative.peter.wearable.snowflakewatchface.CONFIG_SNOWFLAKE"/> -->
+            <meta-data
+                android:name="com.google.android.wearable.watchface.wearableConfigurationAction"
+                android:value="com.perculacreative.peter.wearable.snowflakewatchface.CONFIG_SNOWFLAKE" />
+
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+
+                <category android:name="com.google.android.wearable.watchface.category.WATCH_FACE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.perculacreative.peter.wearable.snowflakewatchface.SnowWatchFaceStepsService"
+            android:label="@string/snowflake_steps_name"
             android:permission="android.permission.BIND_WALLPAPER" >
             <meta-data
                 android:name="android.service.wallpaper"

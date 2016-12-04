@@ -18,26 +18,17 @@ package com.perculacreative.peter.wearable.snowflakewatchface;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ComponentName;
 import android.content.DialogInterface;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.wearable.companion.WatchFaceCompanion;
+import android.support.annotation.ColorInt;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.wearable.DataApi;
-import com.google.android.gms.wearable.DataItem;
 import com.google.android.gms.wearable.DataMap;
-import com.google.android.gms.wearable.DataMapItem;
-import com.google.android.gms.wearable.Wearable;
 
 /**
  * The phone-side config activity for {@code DigitalWatchFaceService}. Like the watch-side config
@@ -47,6 +38,7 @@ import com.google.android.gms.wearable.Wearable;
 public class DigitalWatchFaceCompanionConfigActivity extends Activity
         implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
         ResultCallback<DataApi.DataItemResult> {
+
     private static final String TAG = "DigitalWatchFaceConfig";
 
     // TODO: use the shared constants (needs covering all the samples with Gradle build model)
@@ -61,77 +53,80 @@ public class DigitalWatchFaceCompanionConfigActivity extends Activity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.v("onCreate", "start");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_digital_watch_face_config);
+        Log.v("onCreate", "finish");
 
-        mPeerId = getIntent().getStringExtra(WatchFaceCompanion.EXTRA_PEER_ID);
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .addApi(Wearable.API)
-                .build();
 
-        ComponentName name = getIntent().getParcelableExtra(
-                WatchFaceCompanion.EXTRA_WATCH_FACE_COMPONENT);
-        TextView label = (TextView)findViewById(R.id.label);
-        label.setText(label.getText() + " (" + name.getClassName() + ")");
+//        mPeerId = getIntent().getStringExtra(WatchFaceCompanion.EXTRA_PEER_ID);
+//        mGoogleApiClient = new GoogleApiClient.Builder(this)
+//                .addConnectionCallbacks(this)
+//                .addOnConnectionFailedListener(this)
+//                .addApi(Wearable.API)
+//                .build();
+//
+//        ComponentName name = getIntent().getParcelableExtra(
+//                WatchFaceCompanion.EXTRA_WATCH_FACE_COMPONENT);
+//        TextView label = (TextView)findViewById(R.id.label);
+//        label.setText(label.getText() + " (" + name.getClassName() + ")");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        mGoogleApiClient.connect();
+//        mGoogleApiClient.connect();
     }
 
     @Override
     protected void onStop() {
-        if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
-            mGoogleApiClient.disconnect();
-        }
+//        if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+//            mGoogleApiClient.disconnect();
+//        }
         super.onStop();
     }
 
     @Override // GoogleApiClient.ConnectionCallbacks
     public void onConnected(Bundle connectionHint) {
-        if (Log.isLoggable(TAG, Log.DEBUG)) {
-            Log.d(TAG, "onConnected: " + connectionHint);
-        }
+//        if (Log.isLoggable(TAG, Log.DEBUG)) {
+//            Log.d(TAG, "onConnected: " + connectionHint);
+//        }
 
-        if (mPeerId != null) {
-            Uri.Builder builder = new Uri.Builder();
-            Uri uri = builder.scheme("wear").path(PATH_WITH_FEATURE).authority(mPeerId).build();
-            Wearable.DataApi.getDataItem(mGoogleApiClient, uri).setResultCallback(this);
-        } else {
-            displayNoConnectedDeviceDialog();
-        }
+//        if (mPeerId != null) {
+//            Uri.Builder builder = new Uri.Builder();
+//            Uri uri = builder.scheme("wear").path(PATH_WITH_FEATURE).authority(mPeerId).build();
+//            Wearable.DataApi.getDataItem(mGoogleApiClient, uri).setResultCallback(this);
+//        } else {
+//            displayNoConnectedDeviceDialog();
+//        }
     }
 
     @Override // ResultCallback<DataApi.DataItemResult>
     public void onResult(DataApi.DataItemResult dataItemResult) {
-        if (dataItemResult.getStatus().isSuccess() && dataItemResult.getDataItem() != null) {
-            DataItem configDataItem = dataItemResult.getDataItem();
-            DataMapItem dataMapItem = DataMapItem.fromDataItem(configDataItem);
-            DataMap config = dataMapItem.getDataMap();
-            setUpAllPickers(config);
-        } else {
-            // If DataItem with the current config can't be retrieved, select the default items on
-            // each picker.
-            setUpAllPickers(null);
-        }
+//        if (dataItemResult.getStatus().isSuccess() && dataItemResult.getDataItem() != null) {
+//            DataItem configDataItem = dataItemResult.getDataItem();
+//            DataMapItem dataMapItem = DataMapItem.fromDataItem(configDataItem);
+//            DataMap config = dataMapItem.getDataMap();
+//            setUpAllPickers(config);
+//        } else {
+//            // If DataItem with the current config can't be retrieved, select the default items on
+//            // each picker.
+//            setUpAllPickers(null);
+//        }
     }
 
     @Override // GoogleApiClient.ConnectionCallbacks
     public void onConnectionSuspended(int cause) {
-        if (Log.isLoggable(TAG, Log.DEBUG)) {
-            Log.d(TAG, "onConnectionSuspended: " + cause);
-        }
+//        if (Log.isLoggable(TAG, Log.DEBUG)) {
+//            Log.d(TAG, "onConnectionSuspended: " + cause);
+//        }
     }
 
     @Override // GoogleApiClient.OnConnectionFailedListener
     public void onConnectionFailed(ConnectionResult result) {
-        if (Log.isLoggable(TAG, Log.DEBUG)) {
-            Log.d(TAG, "onConnectionFailed: " + result);
-        }
+//        if (Log.isLoggable(TAG, Log.DEBUG)) {
+//            Log.d(TAG, "onConnectionFailed: " + result);
+//        }
     }
 
     private void displayNoConnectedDeviceDialog() {
@@ -156,10 +151,13 @@ public class DigitalWatchFaceCompanionConfigActivity extends Activity
      */
     private void setUpAllPickers(DataMap config) {
         setUpColorPickerSelection(R.id.background, KEY_BACKGROUND_COLOR, config,
-                R.string.color_black);
-        setUpColorPickerSelection(R.id.hours, KEY_HOURS_COLOR, config, R.string.color_white);
-        setUpColorPickerSelection(R.id.minutes, KEY_MINUTES_COLOR, config, R.string.color_white);
-        setUpColorPickerSelection(R.id.seconds, KEY_SECONDS_COLOR, config, R.string.color_gray);
+                ContextCompat.getColor(this,R.color.md_light_blue_500));
+        setUpColorPickerSelection(R.id.hours, KEY_HOURS_COLOR, config,
+                ContextCompat.getColor(this,R.color.md_white));
+        setUpColorPickerSelection(R.id.minutes, KEY_MINUTES_COLOR, config,
+                ContextCompat.getColor(this,R.color.md_white));
+        setUpColorPickerSelection(R.id.seconds, KEY_SECONDS_COLOR, config,
+                ContextCompat.getColor(this,R.color.md_grey_500));
 
         setUpColorPickerListener(R.id.background, KEY_BACKGROUND_COLOR);
         setUpColorPickerListener(R.id.hours, KEY_HOURS_COLOR);
@@ -168,50 +166,51 @@ public class DigitalWatchFaceCompanionConfigActivity extends Activity
     }
 
     private void setUpColorPickerSelection(int spinnerId, final String configKey, DataMap config,
-                                           int defaultColorNameResId) {
-        String defaultColorName = getString(defaultColorNameResId);
-        int defaultColor = Color.parseColor(defaultColorName);
-        int color;
-        if (config != null) {
-            color = config.getInt(configKey, defaultColor);
-        } else {
-            color = defaultColor;
-        }
-        Spinner spinner = (Spinner) findViewById(spinnerId);
-        String[] colorNames = getResources().getStringArray(R.array.color_array);
-        for (int i = 0; i < colorNames.length; i++) {
-            if (Color.parseColor(colorNames[i]) == color) {
-                spinner.setSelection(i);
-                break;
-            }
-        }
+                                           @ColorInt int defaultColor) {
+//        String defaultColorName = getString(defaultColor);
+//        int defaultColor = Color.parseColor(defaultColorName);
+//        int color;
+//        if (config != null) {
+//            color = config.getInt(configKey, defaultColor);
+//        } else {
+//            color = defaultColor;
+//        }
+//        Spinner spinner = (Spinner) findViewById(spinnerId);
+//        int[] colorInt = getResources().getIntArray(R.array.md_color_array);
+//        for (int i = 0; i < colorInt.length; i++) {
+//            if (colorInt[i] == color) {
+//                Log.v("inColorIntLoop", "" + colorInt[i]);
+////                spinner.setSelection(i);
+//                break;
+//            }
+//        }
     }
 
     private void setUpColorPickerListener(int spinnerId, final String configKey) {
-        Spinner spinner = (Spinner) findViewById(spinnerId);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
-                final String colorName = (String) adapterView.getItemAtPosition(pos);
-                sendConfigUpdateMessage(configKey, Color.parseColor(colorName));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) { }
-        });
+//        Spinner spinner = (Spinner) findViewById(spinnerId);
+//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long id) {
+//                final int color = (int) adapterView.getItemAtPosition(pos);
+//                sendConfigUpdateMessage(configKey, color);
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> adapterView) { }
+//        });
     }
 
-    private void sendConfigUpdateMessage(String configKey, int color) {
-        if (mPeerId != null) {
-            DataMap config = new DataMap();
-            config.putInt(configKey, color);
-            byte[] rawData = config.toByteArray();
-            Wearable.MessageApi.sendMessage(mGoogleApiClient, mPeerId, PATH_WITH_FEATURE, rawData);
-
-            if (Log.isLoggable(TAG, Log.DEBUG)) {
-                Log.d(TAG, "Sent watch face config message: " + configKey + " -> "
-                        + Integer.toHexString(color));
-            }
-        }
+    private void sendConfigUpdateMessage(String configKey, @ColorInt int color) {
+//        if (mPeerId != null) {
+//            DataMap config = new DataMap();
+//            config.putInt(configKey, color);
+//            byte[] rawData = config.toByteArray();
+//            Wearable.MessageApi.sendMessage(mGoogleApiClient, mPeerId, PATH_WITH_FEATURE, rawData);
+//
+//            if (Log.isLoggable(TAG, Log.DEBUG)) {
+//                Log.d(TAG, "Sent watch face config message: " + configKey + " -> "
+//                        + Integer.toHexString(color));
+//            }
+//        }
     }
 }
