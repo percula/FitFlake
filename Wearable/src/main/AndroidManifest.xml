@@ -29,10 +29,10 @@
     <!-- Required for complications to receive complication data and open the provider chooser. -->
 
     <!-- Calendar permission used by CalendarWatchFaceService -->
-    <uses-permission android:name="android.permission.READ_CALENDAR"/>
+    <!--<uses-permission android:name="android.permission.READ_CALENDAR"/>-->
 
     <!-- Location permission used by FitDistanceWatchFaceService -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!--<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>-->
 
     <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <android:uses-permission android:name="android.permission.READ_PHONE_STATE"/>

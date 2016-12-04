@@ -53,14 +53,6 @@ uses-permission#android.permission.WAKE_LOCK
 ADDED from /home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/src/main/AndroidManifest.xml:27:5-67
 	android:name
 		ADDED from /home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/src/main/AndroidManifest.xml:27:22-65
-uses-permission#android.permission.READ_CALENDAR
-ADDED from /home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/src/main/AndroidManifest.xml:32:5-71
-	android:name
-		ADDED from /home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/src/main/AndroidManifest.xml:32:22-69
-uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from /home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/src/main/AndroidManifest.xml:35:5-78
-	android:name
-		ADDED from /home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/src/main/AndroidManifest.xml:35:22-76
 android:uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from /home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/src/main/AndroidManifest.xml:37:5-88
 	android:name

@@ -25,8 +25,8 @@
 
     <!-- Requests to calendar are only made on the wear side (CalendarWatchFaceService.java), so
     no runtime permissions are needed on the phone side. -->
-    <uses-permission android:name="android.permission.READ_CALENDAR" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!--<uses-permission android:name="android.permission.READ_CALENDAR" />-->
+    <!--<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>-->
 
     <!-- All intent-filters for config actions must include the categories
         com.google.android.wearable.watchface.category.COMPANION_CONFIGURATION and

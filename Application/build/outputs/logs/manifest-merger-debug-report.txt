@@ -49,14 +49,6 @@ uses-permission#android.permission.WAKE_LOCK
 ADDED from /home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/src/main/AndroidManifest.xml:24:5-68
 	android:name
 		ADDED from /home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/src/main/AndroidManifest.xml:24:22-65
-uses-permission#android.permission.READ_CALENDAR
-ADDED from /home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/src/main/AndroidManifest.xml:28:5-72
-	android:name
-		ADDED from /home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/src/main/AndroidManifest.xml:28:22-69
-uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from /home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/src/main/AndroidManifest.xml:29:5-78
-	android:name
-		ADDED from /home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/src/main/AndroidManifest.xml:29:22-76
 application
 ADDED from /home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/src/main/AndroidManifest.xml:34:5-54:19
 MERGED from [com.android.support:support-v13:25.0.1] /home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/exploded-aar/com.android.support/support-v13/25.0.1/AndroidManifest.xml:25:5-20

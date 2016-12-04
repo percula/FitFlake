@@ -1,4 +1,4 @@
-#Sun Dec 04 13:28:52 EST 2016
+#Sun Dec 04 14:46:22 EST 2016
 base.0=/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_3f67ad410aa880373bffe715284b4d7b6c390522
 renamed.1=classes2.dex
 renamed.0=classes.dex

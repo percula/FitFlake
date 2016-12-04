@@ -7,7 +7,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="90497481bfa628d52ee9e7cdfc539e955f8d2694">
+        sha1="ef0c2a8b40dfc0cd1571104343227bdd37ce373b">
         <dex dex="/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_acef4114704a530ab79569d8e7b0e7904e6300ce/classes.dex" />
     </item>
     <item
@@ -637,7 +637,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="7bad225b8760880fe53e9f6fe1add073bd00a270">
+        sha1="f19453ccb66b5a93a1501bd17fa9c7f0cace679a">
         <dex dex="/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Wearable/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_3f67ad410aa880373bffe715284b4d7b6c390522/classes.dex" />
     </item>
     <item

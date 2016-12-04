@@ -16,8 +16,8 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.perculacreative.peter.wearable.snowflakewatchface"
-    android:versionCode="3"
-    android:versionName="1.2" >
+    android:versionCode="5"
+    android:versionName="1.1" >
 
     <uses-sdk
         android:minSdkVersion="23"
@@ -32,10 +32,11 @@
 
 
     <!-- Calendar permission used by CalendarWatchFaceService -->
-    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <!-- <uses-permission android:name="android.permission.READ_CALENDAR"/> -->
+
 
     <!-- Location permission used by FitDistanceWatchFaceService -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/> -->
 
     <android:uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />

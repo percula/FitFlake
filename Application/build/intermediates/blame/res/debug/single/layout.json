@@ -5,7 +5,7 @@
     },
     {
         "merged": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/res/merged/debug/layout/notification_action.xml",
-        "source": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/layout/notification_action.xml"
+        "source": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/layout/notification_action.xml"
     },
     {
         "merged": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/res/merged/debug/layout/alert_dialog_wearable.xml",
@@ -17,7 +17,7 @@
     },
     {
         "merged": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/res/merged/debug/layout/notification_action_tombstone.xml",
-        "source": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/layout/notification_action_tombstone.xml"
+        "source": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/layout/notification_action_tombstone.xml"
     },
     {
         "merged": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/res/merged/debug/layout/error_layout.xml",
@@ -77,7 +77,7 @@
     },
     {
         "merged": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/res/merged/debug/layout/notification_template_icon_group.xml",
-        "source": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/res/layout/notification_template_icon_group.xml"
+        "source": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/layout/notification_template_icon_group.xml"
     },
     {
         "merged": "/home/peter/Google_Drive/Coding/Android_Projects/SnowflakeWatchface/WatchFace/Application/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",

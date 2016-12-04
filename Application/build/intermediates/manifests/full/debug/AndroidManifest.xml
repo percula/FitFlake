@@ -16,25 +16,24 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.perculacreative.peter.wearable.snowflakewatchface"
-    android:versionCode="3"
-    android:versionName="1.2" >
+    android:versionCode="5"
+    android:versionName="1.1" >
 
     <uses-sdk
-        android:minSdkVersion="23"
+        android:minSdkVersion="18"
         android:targetSdkVersion="25" />
 
     <!-- Permissions required by the wearable app -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <!--
-    Requests to calendar are only made on the wear side (CalendarWatchFaceService.java), so
+     Requests to calendar are only made on the wear side (CalendarWatchFaceService.java), so
     no runtime permissions are needed on the phone side.
     -->
-    <uses-permission android:name="android.permission.READ_CALENDAR" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
+    <!-- <uses-permission android:name="android.permission.READ_CALENDAR" /> -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/> -->
     <!--
-     All intent-filters for config actions must include the categories
+ All intent-filters for config actions must include the categories
         com.google.android.wearable.watchface.category.COMPANION_CONFIGURATION and
         android.intent.category.DEFAULT.
     -->
